@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Meta viewport tag-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- SEO Meta Tags-->
+        <meta name="description" content="Orma Health">
+        <meta name="keywords" content="bootstrap, theme, template, multipurpose, landing, html5, css3, javascript, event, case study, photography, about, team, portfolio, services, contact, pricing, faqs, careers, blog, sign in, sign up, coming soon, legal">
+        <meta name="author" content="Webinning Ltd.">
+
+        <!-- Page title-->
+        <title>{% if title %}{{ title }} | {% endif %}ORMA</title>
+
+        {% include "partials/_favicons.njk" %}
+
+        <!-- Theme Stylesheets -->
+        {% if environment == 'production' %}
+            <link href="assets/css/theme.min.css" rel="stylesheet">
+        {% else %}
+            <link href="assets/css/theme.css" rel="stylesheet">
+        {% endif %}
+
+        {% if environment == 'production' %}
+            {% include "partials/_gtag.njk" %}
+        {% endif %}
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164029911-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-164029911-1');
+        </script>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K8FTXRQ');</script>
+        <!-- End Google Tag Manager -->
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8FTXRQ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    </head> 
+    
+    <body>
+        {% include "layouts/_header.njk" %}
+
+        <!-- Main content -->
+        <main>
+            {% block content %} {% endblock content %}
+        </main>
+
+        {% include "layouts/_footer.njk" %}
+        {% include "partials/_photoswipe.njk" %}
+
+        {% if environment == 'production' %}
+            <!-- Core Javascripts -->
+            <script src="assets/js/theme.core.min.js"></script>
+
+            <!-- Theme Javascripts -->
+            <script src="assets/js/theme.min.js"></script>
+        {% else %}
+            <!-- Core Javascripts -->
+            <script src="assets/js/theme.core.js"></script>
+
+            <!-- Theme Javascripts -->
+            <script src="assets/js/theme.js"></script>
+        {% endif %}
+    </body>
+</html>

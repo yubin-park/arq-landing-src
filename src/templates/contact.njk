@@ -1,0 +1,122 @@
+<!-- contact.njk -->
+{% extends "layouts/_layout.njk" %}
+{% set title = "Contact" %}
+{% set navbarFull = true %}
+
+{% block content %}
+    <section class="pt-11 mb-6 pt-lg-12 mb-lg-7" id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="mb-n3">Let's connect!</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pt-5">
+                    <div class="bg-white shadow-lg">
+                        <div class="row no-gutters">
+                            <div class="col-lg-7 p-4 p-lg-6">
+
+                                <div class="row mx-n2">
+                                    <div class="col-md px-2 mb-3">
+                                        <input id="name" class="form-control" type="text" placeholder="Full name" aria-label="Full name" />
+                                    </div>
+                                    <div class="col-md px-2 mb-3">
+                                        <input id="phone" class="form-control" type="tel" placeholder="Phone number" aria-label="Phone number" />
+                                    </div>
+                                </div>
+                                <div class="row mx-n2">
+                                    <div class="col-md px-2 mb-3">
+                                        <input id="email" class="form-control" type="email" placeholder="Email address" aria-label="Email address" />
+                                    </div>
+                                    <div class="col-md px-2 mb-3">
+                                        <input id="company" class="form-control" type="text" placeholder="Company" aria-label="Company" />
+                                    </div>
+                                </div>
+                                <div class="row mx-n2">
+                                    <div class="col px-2 mb-3">
+                                        <textarea id="message" class="form-control" rows="7" placeholder="Message" aria-label="Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mx-n2" id="received">
+                                    <div class="col px-2 mb-3">
+                                        <p class="lead mb-4">Thanks so much! Your contact form is received. We will reach out to you within 24 hours.</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-between">
+                                    <div class="col-md">
+                                       <p class="small text-muted mb-4">We won't spam you, promise</p>
+                                    </div>
+                                    <div class="col col-md-auto">
+                                        <button id="submit" type="button" class="btn btn-secondary text-uppercase d-inline-flex align-items-center w-100">Send<svg width="16" height="16" class="ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>send-email-1</title><path d="M23.612.225a1.045,1.045,0,0,0-1.138-.1L.827,11.646a1.547,1.547,0,0,0,.125,2.8l3.254,1.38a.719.719,0,0,0,.043.245l2.5,6.746A1.817,1.817,0,0,0,8.463,24a1.846,1.846,0,0,0,1.219-.474c.039-.035,2.79-3.078,3.4-3.754a.249.249,0,0,1,.283-.062l3.157,1.339a1.591,1.591,0,0,0,1.3-.027,1.563,1.563,0,0,0,.835-.983L23.961,1.3A1.014,1.014,0,0,0,23.612.225ZM5.838,16.046,15.53,7.983A.226.226,0,0,1,15.867,8a.219.219,0,0,1,.019.332L8.648,17.187a.728.728,0,0,0-.157.351l-.633,3.95Z"/></svg></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-5 position-relative bg-white z-index-1">
+                                <div class="row h-100 bg-cover" style="background-image: url(assets/images/photos/office-address.png)" data-jarallax data-speed=".8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function validateEmail(x) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(x).toLowerCase());
+        }
+
+        let name = "";
+        let email = "";
+        let msg = "";
+        let phone = "";
+
+        document.getElementById("received").style.display = "none";
+        
+        document.getElementById("name").addEventListener("input", ()=>{
+            name = document.getElementById("name").value;
+        });
+
+        document.getElementById("phone").addEventListener("input", ()=>{
+            phone = document.getElementById("phone").value;
+        });
+
+        document.getElementById("email").addEventListener("input", ()=>{
+            email = document.getElementById("email").value;
+        });
+
+        document.getElementById("message").addEventListener("input", ()=>{
+            msg = document.getElementById("message").value;
+        });
+
+        document.getElementById("submit").addEventListener("click", (e)=>{
+            
+            e.preventDefault();
+                    
+            if (validateEmail(email)){
+                // send an email
+                const url = "https://webhooks.mongodb-realm.com/api/client/v2.0/app/test-zglmt/service/orma-api/incoming_webhook/send-contact-form";
+                const urlParams = new URLSearchParams()
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({name: name, 
+                                          from_email: email, 
+                                          message: msg, 
+                                          phone: phone})
+                });
+
+                document.getElementById("received").style.display = "block";
+
+            }else{
+                alert("Please enter a valid email address");
+            }
+        });
+    </script>
+
+{% endblock content %}
