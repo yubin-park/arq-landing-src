@@ -6,47 +6,7 @@
         },
 		{
             "nav_title": "Solutions",
-            "nav_link": "#",
-            "dropdown": [
-                {
-                    "dropdown_column_class": "col-6 col-md-4 col-lg-6",
-                    "dropdown_column": [
-                        {
-                            "dropdown_header": "Value-based Care",
-                            "dropdown_section_class": "col",
-                            "dropdown_section": [
-                                {
-                                    "dropdown_title": "Risk Adjustment",
-                                    "dropdown_link": "./riskadjustment.html"
-                                },
-                                {
-                                    "dropdown_title": "Care Management",
-                                    "dropdown_link": "./caremanagement.html"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "dropdown_column_class": "col-6 col-md-4 col-lg-6",
-                    "dropdown_column": [
-                        {
-                            "dropdown_header": "Fee-for-Service",
-                            "dropdown_section_class": "col",
-                            "dropdown_section": [
-                                {
-                                    "dropdown_title": "Remote Patient Monitoring",
-                                    "dropdown_link": "./remotepatientmonitoring.html"
-                                },
-                                {
-                                    "dropdown_title": "Chronic Care Management",
-                                    "dropdown_link": "./chroniccaremanagement.html"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "nav_link": "./arqinsights.html"
         },
         {
             "nav_title": "Company",
@@ -56,7 +16,7 @@
                     "dropdown_column_class": "col-6 col-md-4",
                     "dropdown_column": [
                         {
-                            "dropdown_header": "More about Orma",
+                            "dropdown_header": "More about ARQ",
                             "dropdown_section_class": "col-6 col-md-12",
                             "dropdown_section": [
                                 {
@@ -70,31 +30,6 @@
                                 {
                                     "dropdown_title": "Contact",
                                     "dropdown_link": "./contact.html"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "nav_title": "Resources",
-            "nav_link": "#",
-            "dropdown": [
-                {
-                    "dropdown_column_class": "col-6 col-md-4",
-                    "dropdown_column": [
-                        {
-                            "dropdown_header": "Get Started",
-                            "dropdown_section_class": "col-6 col-md-12",
-                            "dropdown_section": [
-                                {
-                                    "dropdown_title": "FAQs",
-                                    "dropdown_link": "./faqs.html"
-                                },
-                                {
-                                    "dropdown_title": "Insights",
-                                    "dropdown_link": "./insights.html"
                                 }
                             ]
                         }
